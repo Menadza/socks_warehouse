@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_USERNAME}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    url: ${SPRING_DATASOURCE_USERNAME:jdbc:postgresql://localhost:5432/postgres}
+    username: ${JDBC_DATABASE_USERNAME:bestuser}
+    password: ${JDBC_DATABASE_PASSWORD:bestuser}
 
   jpa:
     generate-ddl: false
@@ -17,4 +17,4 @@ logging:
 server:
   error:
     include-message: always
-  port: 33500
+  port: ${PORT:8080}
