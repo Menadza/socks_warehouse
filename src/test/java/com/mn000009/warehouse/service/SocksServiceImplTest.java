@@ -87,67 +87,67 @@ class SocksServiceImplTest {
         , QUANTITY_LESSER)).thenReturn(Optional.of(new SocksPackage(ID, new Color(ID, COLOR_TITLE), COTTON_PART, QUANTITY)));
     service.outcome(new SocksDto(COLOR_TITLE, COTTON_PART, QUANTITY_LESSER));
     verify(repository, times(1))
-        .save(new SocksPackage(ID, new Color(ID, COLOR_TITLE),COTTON_PART, QUANTITY_RESULT));
+        .save(new SocksPackage(ID, new Color(ID, COLOR_TITLE), COTTON_PART, QUANTITY_RESULT));
   }
 
   @Test
   @DisplayName("Should_GetNotExistStatus_When_OperationMoreThan")
   void statusFirst() {
-    when(repository.findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE,COTTON_PART))
+    when(repository.findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE, COTTON_PART))
         .thenReturn(Optional.empty());
-    assertEquals("0",service.getStatus(COLOR_TITLE, Operation.MORETHAN, COTTON_PART));
+    assertEquals("0", service.getStatus(COLOR_TITLE, Operation.MORETHAN, COTTON_PART));
     verify(repository, times(1))
-        .findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE,COTTON_PART);
+        .findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE, COTTON_PART);
   }
 
   @Test
   @DisplayName("Should_GetNotExistStatus_When_OperationLessThan")
   void statusSecond() {
-    when(repository.findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE,COTTON_PART))
+    when(repository.findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE, COTTON_PART))
         .thenReturn(Optional.empty());
-    assertEquals("0",service.getStatus(COLOR_TITLE, Operation.LESSTHAN, COTTON_PART));
+    assertEquals("0", service.getStatus(COLOR_TITLE, Operation.LESSTHAN, COTTON_PART));
     verify(repository, times(1))
-        .findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE,COTTON_PART);
+        .findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE, COTTON_PART);
   }
 
   @Test
   @DisplayName("Should_GetExistStatus_When_OperationEqual")
   void statusThird() {
-    when(repository.findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE,COTTON_PART))
+    when(repository.findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE, COTTON_PART))
         .thenReturn(Optional.of(5));
     assertEquals("5", service.getStatus(COLOR_TITLE, Operation.EQUAL, COTTON_PART));
     verify(repository, times(1))
-        .findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE,COTTON_PART);
+        .findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE, COTTON_PART);
   }
 
   @Test
   @DisplayName("Should_GetNotExistStatus_When_OperationEqual")
   void statusFourth() {
-    when(repository.findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE,COTTON_PART))
+    when(repository.findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE, COTTON_PART))
         .thenReturn(Optional.empty());
     assertEquals("0", service.getStatus(COLOR_TITLE, Operation.EQUAL, COTTON_PART));
     verify(repository, times(1))
-        .findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE,COTTON_PART);
+        .findAllByColor_TitleAndCottonPartEquals(COLOR_TITLE, COTTON_PART);
   }
 
   @Test
   @DisplayName("Should_GetExistStatus_When_OperationMoreThan")
   void statusFifth() {
-    when(repository.findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE,COTTON_PART))
+    when(repository.findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE, COTTON_PART))
         .thenReturn(Optional.of(5));
-    assertEquals("5",service.getStatus(COLOR_TITLE, Operation.MORETHAN, COTTON_PART));
+    assertEquals("5", service.getStatus(COLOR_TITLE, Operation.MORETHAN, COTTON_PART));
     verify(repository, times(1))
-        .findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE,COTTON_PART);
+        .findAllByColor_TitleAndCottonPartGreaterThan(COLOR_TITLE, COTTON_PART);
   }
 
   @Test
   @DisplayName("Should_GetExistStatus_When_OperationLessThan")
   void statusSixth() {
-    when(repository.findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE,COTTON_PART))
+    when(repository.findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE, COTTON_PART))
         .thenReturn(Optional.of(5));
-    assertEquals("5",service.getStatus(COLOR_TITLE, Operation.LESSTHAN, COTTON_PART));
+    assertEquals("5", service.getStatus(COLOR_TITLE, Operation.LESSTHAN, COTTON_PART));
     verify(repository, times(1))
-        .findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE,COTTON_PART);
+        .findAllByColor_TitleAndCottonPartLessThan(COLOR_TITLE, COTTON_PART);
   }
 
 }

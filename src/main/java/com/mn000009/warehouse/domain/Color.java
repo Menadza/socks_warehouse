@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Color {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
